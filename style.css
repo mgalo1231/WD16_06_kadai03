@@ -1,0 +1,365 @@
+:root {
+  --brown: #6b3f3a;
+  --text: #222222;
+  /* Easy-to-tune positions for the four nav pills */
+  --pill1-top: 200px;
+  --pill1-left: 23%;
+  --pill2-top: 240px;
+  --pill2-right: 20%;
+  --pill3-top: 420px;
+  --pill3-left: 34%;
+  --pill4-top: 458px;
+  --pill4-right: 37%;
+  /* Spin control */
+  --spin-down-duration: 0.9s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  color: var(--text);
+  background: #ffffff;
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* -------------- Page Two -------------- */
+.page-two {
+  background: #f5e8e2;
+  padding: 90px 0 120px;
+}
+.page-two__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  align-items: start;
+  padding: 0 5%;
+}
+.page-two__media {
+  display: grid;
+  gap: 32px;
+}
+.photo {
+  margin: 0;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #ddd;
+  box-shadow: 0 18px 52px rgba(0,0,0,0.14);
+}
+.photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.photo-bottom figcaption {
+  padding: 14px 20px 20px;
+  font-family: 'Seymour One', 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  color: #6b3f3a;
+  font-size: clamp(14px, 1.4vw, 22px);
+}
+.page-two__content {
+  color: #5a4a43;
+}
+.jp-heading {
+  margin: 8px 0 24px;
+  font-family: 'Kosugi Maru', 'Noto Sans JP', system-ui, sans-serif;
+  font-size: clamp(28px, 3vw, 46px);
+  line-height: 1.25;
+  color: #6b3f3a;
+  letter-spacing: 0.02em;
+}
+.jp-body {
+  font-family: 'Kosugi Maru', 'Noto Sans JP', system-ui, sans-serif;
+  color: #5a4a43;
+  font-size: clamp(15px, 1.38vw, 19px);
+  line-height: 1.9;
+}
+.jp-body p {
+  margin: 0 0 14px;
+}
+.brand-callout {
+  margin: 36px 0 0;
+  font-family: 'Seymour One', 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  color: #6b3f3a;
+  font-size: clamp(18px, 1.8vw, 26px);
+  line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+  .page-two__inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-two {
+    padding: 70px 0 90px;
+  }
+  .page-two__inner {
+    padding: 0 8%;
+  }
+  .photo {
+    border-radius: 18px;
+  }
+}
+
+/* Top right tagline */
+.tagline {
+  position: absolute;
+  top: 72px;
+  right: 6%;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+  text-align: right;
+  font-family: 'Seymour One', 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  font-size: clamp(18px, 1.6vw, 28px);
+}
+
+/* Center logo */
+.site-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 290px;
+  margin: 0;
+}
+.site-logo img {
+  display: block;
+  width: clamp(520px, 60vw, 860px);
+  height: auto;
+}
+
+/* Pills (MENU, NEWS, ABOUT, ACCESS) */
+.pill-box {
+  position: absolute;
+  animation: floatY 3.6s ease-in-out infinite;
+  will-change: transform;
+}
+.pills .pill {
+  display: inline-block;
+  padding: 12px 28px;
+  background: var(--brown);
+  color: #ffffff;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: 'Seymour One', 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  font-size: clamp(14px, 1.2vw, 22px);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+  transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+  user-select: none;
+}
+.pills .pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+  filter: brightness(1.05);
+}
+/* Individual positions */
+.pill-box.pill-1 { /* MENU */
+  top: var(--pill1-top);
+  left: var(--pill1-left);
+  animation-duration: 3.6s;
+  animation-delay: 0s;
+}
+.pill-box.pill-2 {        /* NEWS */
+  top: var(--pill2-top);
+  right: var(--pill2-right);
+  animation-duration: 3.9s;
+  animation-delay: .15s;
+}
+.pill-box.pill-3 {       /* ABOUT */
+  top: var(--pill3-top);
+  left: var(--pill3-left);
+  animation-duration: 3.3s;
+  animation-delay: .3s;
+}
+.pill-box.pill-4 {      /* ACCESS */
+  top: var(--pill4-top);
+  right: var(--pill4-right);
+  animation-duration: 4.0s;
+  animation-delay: .45s;
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Decorative images */
+.decor {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+.decor img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-origin: center center;
+  transition: transform 0.6s ease-in-out;
+  will-change: transform;
+}
+.decor:hover img { animation: spin 0.2s linear infinite; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Decelerate to stop after hover */
+.decor img.spin-down {
+  animation: spin var(--spin-down-duration) ease-out 1;
+}
+.decor-sandwich {
+  top: 80px;
+  left: 6%;
+  width: clamp(120px, 12vw, 180px);
+  height: auto;
+  pointer-events: auto;
+  cursor: pointer;
+}
+.decor-macaron {
+  right: 12%;
+  bottom: 250px;
+  width: clamp(110px, 10.5vw, 160px);
+  height: auto;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Bonjour block with coffee */
+.bonjour {
+  position: absolute;
+  left: 6%;
+  bottom: 80px;
+}
+.bonjour-title {
+  margin: 0 0 6px;
+  font-family: 'Seymour One', 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  font-size: clamp(22px, 2.2vw, 32px);
+  font-weight: 900;
+}
+.bonjour-sub {
+  margin: 0 0 10px;
+  font-family: 'Seymour One', 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  font-size: clamp(16px, 1.6vw, 24px);
+  font-weight: 700;
+}
+.decor-coffee {
+  left: 260px;
+  bottom: 160px;
+  width: clamp(180px, 18vw, 260px);
+  height: auto;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Address block */
+.address {
+  position: absolute;
+  right: 6%;
+  bottom: 90px;
+  text-align: right;
+  font-family: 'Seymour One', 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  color: #5b3b35;
+  line-height: 1.2;
+  font-size: clamp(16px, 1.8vw, 28px);
+  letter-spacing: 0.01em;
+}
+.address p {
+  margin: 0;
+}
+
+/* Responsive tweaks */
+@media (max-width: 920px) {
+  :root {
+    --pill1-top: 170px;
+    --pill1-left: 8vw;
+    --pill2-top: 170px;
+    --pill2-right: 8vw;
+    --pill3-top: 360px;
+    --pill3-left: 14vw;
+    --pill4-top: 360px;
+    --pill4-right: 20vw;
+  }
+  .tagline {
+    top: 32px;
+    right: 4%;
+  }
+  .decor-sandwich {
+    top: 24px;
+    left: 3%;
+  }
+  .site-logo {
+    top: 200px;
+  }
+  .pill-box.pill-1 {
+    top: 170px;
+    left: 8vw;
+  }
+  .pill-box.pill-2 {
+    top: 170px;
+    right: 8vw;
+  }
+  .pill-box.pill-3 {
+    top: 360px;
+    left: 14vw;
+  }
+  .pill-box.pill-4 {
+    top: 360px;
+    right: 20vw;
+  }
+  .bonjour {
+    left: 4vw;
+    bottom: 18vh;
+  }
+  .decor-coffee {
+    left: 22vw;
+  }
+  .decor-macaron {
+    right: 12vw;
+    bottom: 24vh;
+  }
+  .address {
+    right: 4%;
+    bottom: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill-box {
+    animation: none;
+  }
+  .pills .pill {
+    transition: none;
+  }
+  .decor:hover img {
+    animation: none;
+  }
+  .decor img.spin-down {
+    animation: none;
+  }
+}
