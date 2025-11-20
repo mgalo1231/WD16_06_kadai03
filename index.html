@@ -44,6 +44,11 @@
         <a class="pill" href="#access">ACCESS</a>
       </div>
     </nav>
+    <button class="hamburger" type="button" aria-label="Open navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
     <!-- Bottom left text + coffee -->
     <div class="bonjour">
@@ -94,7 +99,115 @@
     </div>
   </section>
 
+  <!-- Menu Section -->
+  <section id="menu" class="menu-section">
+    <div class="menu-container">
+      <div class="menu-header">
+        <div class="menu-title-group">
+          <h2 class="menu-title-en">MENU</h2>
+          <span class="menu-title-jp">メニュー</span>
+        </div>
+        <div class="menu-tagline">
+          <span>Mornin aroma</span>
+          <span>Evening comfort</span>
+        </div>
+      </div>
+
+      <!-- Folder Container -->
+      <div class="menu-folder" data-active="morning">
+        <!-- Background Layers -->
+        <div class="folder-bg bg-morning"></div>
+        <div class="folder-bg bg-drink"></div>
+        <div class="folder-bg bg-pasta"></div>
+        <div class="folder-bg bg-pizza"></div>
+        <div class="folder-bg bg-dessert"></div>
+
+        <div class="menu-tabs">
+          <button class="tab-btn" data-target="morning">モーニング</button>
+          <button class="tab-btn" data-target="drink">ドリンク</button>
+          <button class="tab-btn" data-target="pasta">パスタ</button>
+          <button class="tab-btn" data-target="pizza">ピザ</button>
+          <button class="tab-btn" data-target="dessert">デザート</button>
+        </div>
+
+        <div class="menu-content">
+          <!-- Content for Morning -->
+          <div class="menu-grid active" id="content-morning">
+            <!-- Item 1 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/img5.jpg" alt="ブランチトーストセット">
+              </div>
+              <h3 class="menu-name">ブランチトーストセット</h3>
+              <p class="menu-desc">
+                バターが溶ける厚切りトーストに、<br>
+                ベーコンと目玉焼きを添えた<br>
+                定番モーニング。<br>
+                香ばしいパンの香りと、朝のやさしい光<br>
+                がぴったりです。
+              </p>
+              <p class="menu-price">¥850</p>
+            </div>
+            <!-- Item 2 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/img5.jpg" alt="サニーエッグブレックファースト">
+              </div>
+              <h3 class="menu-name">サニーエッグ<br>ブレックファースト</h3>
+              <p class="menu-desc">
+                ダブルエッグと新鮮な野菜<br>
+                そしてスープを組み合わせた<br>
+                満足の一皿
+              </p>
+              <p class="menu-price">¥930</p>
+            </div>
+            <!-- Item 3 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/img5.jpg" alt="フレンチガーデントースト">
+              </div>
+              <h3 class="menu-name">フレンチガーデントースト</h3>
+              <p class="menu-desc">
+                こんがり焼いたトーストに<br>
+                半熟の目玉焼きとハーブをトッピング<br>
+                見た目も華やかな<br>
+                バリの朝食スタイル
+              </p>
+              <p class="menu-price">¥880</p>
+            </div>
+            <!-- Item 4 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/img5.jpg" alt="イングリッシュプレート">
+              </div>
+              <h3 class="menu-name">イングリッシュ<br>プレート</h3>
+              <p class="menu-desc">
+                カリカリベーコンと<br>
+                スクランブルエッグの<br>
+                王道コンビネーション
+              </p>
+              <p class="menu-price">¥950</p>
+            </div>
+          </div>
+
+          <!-- Placeholders for other tabs -->
+          <div class="menu-grid" id="content-drink" style="display:none;">
+             <div class="menu-item"><h3 class="menu-name">Drink Menu Coming Soon</h3></div>
+          </div>
+          <div class="menu-grid" id="content-pasta" style="display:none;">
+             <div class="menu-item"><h3 class="menu-name">Pasta Menu Coming Soon</h3></div>
+          </div>
+          <div class="menu-grid" id="content-pizza" style="display:none;">
+             <div class="menu-item"><h3 class="menu-name">Pizza Menu Coming Soon</h3></div>
+          </div>
+          <div class="menu-grid" id="content-dessert" style="display:none;">
+             <div class="menu-item"><h3 class="menu-name">Dessert Menu Coming Soon</h3></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <script src="./main.js"></script>
 </body>
 </html>
-
