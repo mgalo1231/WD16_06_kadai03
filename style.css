@@ -1,3 +1,8 @@
+/* Smooth scrolling for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --brown: #6b3f3a;
   --text: #222222;
@@ -34,6 +39,7 @@ body {
   color: var(--text);
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
+  font-weight: 700; /* Global baseline for JP text */
 }
 
 /* Noise Texture */
@@ -86,7 +92,8 @@ body {
   top: 290px;
   margin: 0;
   transition: transform 0.35s ease, top 0.35s ease;
-  z-index: 10;
+  z-index: 1200; /* Always above content */
+  pointer-events: none;
 }
 .site-logo img {
   display: block;
@@ -101,22 +108,38 @@ body {
   animation: floatY 3.6s ease-in-out infinite;
   will-change: transform;
   transition: transform 0.35s ease, opacity 0.35s ease;
+  z-index: 1250;
 }
 .pills .pill {
-  display: inline-block;
-  padding: 12px 32px; /* Wider padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px; /* Adjusted padding */
   background: var(--brown);
   color: #ffffff;
   border-radius: 999px;
   text-decoration: none;
   font-family: var(--font-en);
-  font-weight: 600;
-  letter-spacing: 0.1em; /* Elegant spacing */
-  font-size: clamp(16px, 1.2vw, 22px);
-  box-shadow: 0 4px 10px rgba(107, 63, 58, 0.2); /* Softer shadow */
+  box-shadow: 0 4px 10px rgba(107, 63, 58, 0.2);
   transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
   user-select: none;
 }
+.pills .pill .en {
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  font-size: clamp(16px, 1.2vw, 20px);
+  line-height: 1;
+}
+.pills .pill .jp {
+  font-family: var(--font-jp);
+  font-size: 12px; /* Increased from 10px */
+  font-weight: 700;
+  margin-top: 4px; /* Slightly more space */
+  letter-spacing: 0.05em;
+  opacity: 1;
+}
+
 .pills .pill:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(107, 63, 58, 0.25);
@@ -166,7 +189,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 10px; /* Gap between 2 lines */
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   transform: scale(0.7);
@@ -174,13 +197,23 @@ body {
   visibility: hidden;
   pointer-events: none;
   transition: transform 0.3s ease, opacity 0.3s ease;
-  z-index: 15;
+  z-index: 1300;
 }
 .hamburger span {
-  width: 26px;
-  height: 2px; /* Thinner line */
+  display: block;
+  width: 24px;
+  height: 2px;
   background: #fff;
   border-radius: 999px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* X animation when nav is open */
+body.is-sticky.nav-open .hamburger span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+body.is-sticky.nav-open .hamburger span:nth-child(2) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 /* Decorative images */
@@ -246,7 +279,7 @@ body {
   font-style: italic;
 }
 .decor-coffee {
-  left: 260px;
+  left: 220px;
   bottom: 160px;
   width: clamp(180px, 18vw, 260px);
   height: auto;
@@ -377,12 +410,31 @@ body.is-sticky .pills {
   pointer-events: none;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 12;
+  z-index: 1300;
 }
 body.is-sticky .pill-box .pill {
   position: static;
-  display: block;
+  /* Maintain flex behavior for sticky mode */
+  display: flex; 
+  width: 140px; /* Fixed width for consistency in menu */
 }
+
+/* Staggered animation for pills in dropdown */
+body.is-sticky .pill-box {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+body.is-sticky .pill-box.pill-1 { transition-delay: 0s; }
+body.is-sticky .pill-box.pill-2 { transition-delay: 0.05s; }
+body.is-sticky .pill-box.pill-3 { transition-delay: 0.1s; }
+body.is-sticky .pill-box.pill-4 { transition-delay: 0.15s; }
+
+body.is-sticky.nav-open .pill-box {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 body.is-sticky .hamburger {
   opacity: 1;
   visibility: visible;
@@ -395,12 +447,60 @@ body.is-sticky.nav-open .pills {
   transform: translateY(0);
 }
 
+/* -------------- Preloader -------------- */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  background:
+    radial-gradient(1200px 800px at 50% -20%, rgba(255,255,255,0.9), rgba(239,220,192,0.95) 40%, rgba(239,220,192,1) 60%),
+    #efdcc0; /* matches file2 background tone */
+  display: grid;
+  place-items: center;
+  transition: opacity 0.6s ease 0.1s, visibility 0s linear 0.7s;
+}
+.preloader.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+.preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.preloader-logo {
+  width: clamp(160px, 24vw, 260px);
+  height: auto;
+  filter: saturate(0.4) contrast(0.9);
+}
+.preloader-spinner {
+  width: 44px;
+  height: 44px;
+  border: 2px solid rgba(107,63,58,0.25);
+  border-top-color: var(--brown);
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+}
+.preloader-copy {
+  margin: 0;
+  font-family: var(--font-en);
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: #5a4a43;
+  opacity: 0.8;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 /* -------------- Page Two (RENEWAL - Modern Chic) -------------- */
 .page-two {
   background: var(--beige-bg);
   padding: 160px 0 200px;
   position: relative;
   overflow: hidden;
+  scroll-margin-top: clamp(110px, 16vh, 180px);
 }
 
 .about-background-text {
@@ -486,7 +586,7 @@ body.is-sticky.nav-open .pills {
   line-height: 1.6;
   margin-bottom: 60px;
   letter-spacing: 0.08em;
-  font-weight: 500;
+  font-weight: 600; /* More presence */
 }
 .highlight {
   color: #b56a63; /* Muted elegant pink */
@@ -503,11 +603,11 @@ body.is-sticky.nav-open .pills {
   font-size: 15px;
   line-height: 2.6; /* Very airy */
   margin-bottom: 80px;
-  font-weight: 400;
+  font-weight: 500; /* Standardized JP weight */
 }
 .lead-paragraph {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600; /* Bolder */
   margin-bottom: 40px;
   color: #4a3b38;
 }
@@ -605,6 +705,7 @@ body.is-sticky.nav-open .pills {
   max-width: 1200px;
   margin: 0 auto;
   width: 90%;
+  scroll-margin-top: clamp(110px, 16vh, 180px);
 }
 
 .menu-header {
@@ -634,7 +735,7 @@ body.is-sticky.nav-open .pills {
   font-family: var(--font-jp);
   font-size: clamp(16px, 1.5vw, 20px);
   color: #5a4a43;
-  font-weight: 500;
+  font-weight: 600; /* Standardized Boldness */
   letter-spacing: 0.1em;
 }
 .menu-tagline {
@@ -710,7 +811,7 @@ body.is-sticky.nav-open .pills {
   background: transparent;
   font-family: var(--font-jp); /* Mincho */
   font-size: clamp(14px, 1.4vw, 16px);
-  font-weight: 500;
+  font-weight: 600; /* Standardized */
   opacity: 0.7;
   cursor: pointer;
   display: flex;
@@ -726,7 +827,7 @@ body.is-sticky.nav-open .pills {
 .tab-btn.active {
   font-size: clamp(16px, 1.6vw, 20px);
   opacity: 1;
-  font-weight: 600;
+  font-weight: 700; /* Active is bolder */
 }
 
 .tab-btn[data-target="morning"] { color: #fff; }
@@ -757,6 +858,152 @@ body.is-sticky.nav-open .pills {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scrollable Menu Grid (for Pasta) */
+.menu-scrollable {
+  grid-template-columns: unset;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 40px;
+  padding-bottom: 20px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Only show flex layout when scrollable menu is active/visible */
+.menu-scrollable:not([style*="display: none"]) {
+  display: flex;
+}
+
+.menu-scrollable .menu-item {
+  flex: 0 0 clamp(200px, 22vw, 240px);
+  min-width: clamp(200px, 22vw, 240px);
+}
+
+/* Custom scrollbar styling */
+.menu-scrollable::-webkit-scrollbar {
+  height: 8px;
+}
+
+.menu-scrollable::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.menu-scrollable::-webkit-scrollbar-thumb {
+  background: rgba(107, 63, 58, 0.4);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.menu-scrollable::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 63, 58, 0.6);
+}
+
+/* Firefox scrollbar */
+.menu-scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(107, 63, 58, 0.4) rgba(255, 255, 255, 0.3);
+}
+
+/* Drink Menu Text List */
+.menu-drink-list {
+  display: flex;
+  gap: 50px;
+  padding: 10px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 15px;
+}
+
+/* Custom scrollbar for drink menu */
+.menu-drink-list::-webkit-scrollbar {
+  height: 6px;
+}
+
+.menu-drink-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.menu-drink-list::-webkit-scrollbar-thumb {
+  background: rgba(107, 63, 58, 0.4);
+  border-radius: 10px;
+}
+
+.menu-drink-list {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(107, 63, 58, 0.4) rgba(255, 255, 255, 0.3);
+}
+
+.drink-category {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 0 0 220px;
+  min-width: 220px;
+}
+
+.drink-category-title {
+  font-family: var(--font-en);
+  font-size: 16px;
+  font-weight: 700;
+  color: #5a3d2b;
+  letter-spacing: 0.15em;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #8b6914;
+  margin: 0;
+}
+
+.drink-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drink-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px dotted rgba(90, 61, 43, 0.3);
+}
+
+.drink-name {
+  font-family: var(--font-jp);
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a3728;
+  letter-spacing: 0.03em;
+}
+
+.drink-price {
+  font-family: var(--font-en);
+  font-size: 14px;
+  font-weight: 600;
+  color: #8b6914;
+  letter-spacing: 0.05em;
+  margin-left: 15px;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .drink-category {
+    flex: 0 0 180px;
+    min-width: 180px;
+  }
+  .drink-category-title {
+    font-size: 14px;
+  }
+  .drink-name, .drink-price {
+    font-size: 13px;
+  }
 }
 
 /* Menu Item Styles */
@@ -792,7 +1039,7 @@ body.is-sticky.nav-open .pills {
   margin: 0 0 16px;
   line-height: 1.6;
   min-height: 2.8em;
-  font-weight: 600;
+  font-weight: 600; /* Title weight */
 }
 .menu-desc {
   font-family: var(--font-jp);
@@ -801,7 +1048,7 @@ body.is-sticky.nav-open .pills {
   margin: 0 0 20px;
   opacity: 0.9;
   flex-grow: 1;
-  font-weight: 400;
+  font-weight: 500; /* Body weight */
 }
 .menu-price {
   font-family: var(--font-en);
@@ -811,7 +1058,21 @@ body.is-sticky.nav-open .pills {
   font-weight: 600;
 }
 
+@media (max-width: 1024px) {
+  .menu-scrollable .menu-item {
+    flex: 0 0 200px;
+    min-width: 200px;
+  }
+}
+
 @media (max-width: 768px) {
+  .menu-scrollable .menu-item {
+    flex: 0 0 180px;
+    min-width: 180px;
+  }
+  .menu-scrollable {
+    gap: 30px;
+  }
   .menu-folder {
     padding: 50px 20px 40px;
     background-size: 100% 100%; 
@@ -838,6 +1099,7 @@ body.is-sticky.nav-open .pills {
   background: var(--beige-bg);
   padding: 120px 0 160px;
   position: relative;
+  scroll-margin-top: clamp(110px, 16vh, 180px);
 }
 
 .news-container {
@@ -909,15 +1171,65 @@ body.is-sticky.nav-open .pills {
   flex-direction: column;
   gap: 12px;
   cursor: pointer;
-  transition: background 0.3s ease;
   position: relative;
+  overflow: visible;
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transform-origin: center center;
 }
 .news-item:last-child {
   border-bottom: 1px solid rgba(107, 63, 58, 0.2);
 }
 .news-item:hover {
-  background: rgba(107, 63, 58, 0.04);
+  transform: scale(1.02);
 }
+
+/* Hand-drawn circle effect */
+.news-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 60px);
+  height: calc(100% + 30px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+.news-circle path {
+  fill: none;
+  stroke: #c75050;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.news-item:hover .news-circle path {
+  stroke-dashoffset: 0;
+}
+
+/* 每个圆圈不同的旋转和样式 */
+.news-circle.circle-1 {
+  transform: translate(-50%, -50%) rotate(-1.5deg);
+}
+.news-circle.circle-2 {
+  transform: translate(-50%, -50%) rotate(1deg);
+}
+.news-circle.circle-3 {
+  transform: translate(-50%, -50%) rotate(-0.5deg);
+}
+.news-circle.circle-4 {
+  transform: translate(-50%, -50%) rotate(2deg);
+}
+
+/* 不同的动画时长让每个更有个性 */
+.news-circle.circle-1 path { transition-duration: 0.7s; }
+.news-circle.circle-2 path { transition-duration: 0.85s; }
+.news-circle.circle-3 path { transition-duration: 0.75s; }
+.news-circle.circle-4 path { transition-duration: 0.9s; }
 
 .news-meta {
   display: flex;
@@ -943,26 +1255,8 @@ body.is-sticky.nav-open .pills {
   font-family: var(--font-jp);
   font-size: 18px;
   color: var(--brown);
-  font-weight: 500;
+  font-weight: 600; /* Headline weight */
   line-height: 1.6;
-  padding-right: 40px;
-}
-
-.news-arrow {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: var(--font-en);
-  font-size: 24px;
-  color: var(--brown);
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.news-item:hover .news-arrow {
-  opacity: 1;
-  transform: translate(5px, -50%);
 }
 
 /* News Visual */
@@ -1003,6 +1297,7 @@ body.is-sticky.nav-open .pills {
   padding: 100px 0 140px;
   background: #ffffff;
   position: relative;
+  scroll-margin-top: clamp(110px, 16vh, 180px);
 }
 
 .access-container {
@@ -1070,7 +1365,7 @@ body.is-sticky.nav-open .pills {
 .access-toggle-btn .jp {
   font-family: var(--font-jp);
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600; /* Standardized */
 }
 
 /* Toggle State Logic */
@@ -1164,6 +1459,7 @@ body.is-sticky.nav-open .pills {
   line-height: 2;
   margin-bottom: 40px;
   color: var(--brown);
+  font-weight: 500; /* Body weight */
 }
 
 .reservation-form {
@@ -1205,6 +1501,7 @@ body.is-sticky.nav-open .pills {
   border-radius: 0;
   outline: none;
   transition: border-color 0.3s ease;
+  font-weight: 500; /* Input text weight */
 }
 
 .reservation-form input:focus,
@@ -1234,13 +1531,112 @@ body.is-sticky.nav-open .pills {
 
 /* Footer */
 .site-footer {
-  text-align: center;
-  padding: 40px 0;
   background: var(--brown);
   color: #fff;
+  padding: 60px 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-logo {
+  height: 32px;
+  width: auto;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a:hover {
+  opacity: 0.7;
+  transform: translateY(-2px);
+}
+
+.footer-social img {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-hours {
+  margin: 0;
   font-family: var(--font-en);
-  font-size: 12px;
+  font-size: 18px;
+  font-weight: 600;
   letter-spacing: 0.05em;
+}
+
+.footer-hours-label {
+  font-family: var(--font-jp);
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+.footer-address {
+  margin: 0;
+  font-family: var(--font-en);
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: right;
+}
+
+.footer-nav a {
+  font-family: var(--font-en);
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: opacity 0.3s ease;
+}
+
+.footer-nav a:hover {
+  opacity: 0.7;
 }
 
 @media (max-width: 768px) {
@@ -1256,5 +1652,20 @@ body.is-sticky.nav-open .pills {
   }
   .reservation-form-wrapper {
     padding: 0;
+  }
+  
+  /* Footer responsive */
+  .footer-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .footer-nav {
+    text-align: left;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .footer-nav a {
+    font-size: 14px;
   }
 }

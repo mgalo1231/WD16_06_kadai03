@@ -16,6 +16,17 @@
   <!-- Noise Texture Overlay for Premium Feel -->
   <div class="grain-overlay"></div>
 
+  <!-- Preloader -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <div class="preloader-mark">
+        <img src="./images/logo-black.svg" alt="Café de PARIS" class="preloader-logo">
+      </div>
+      <div class="preloader-spinner" aria-label="Loading"></div>
+      <p class="preloader-copy">Brewing your perfect moment...</p>
+    </div>
+  </div>
+
   <main class="hero">
     <!-- Top left decoration -->
     <div class="decor decor-sandwich">
@@ -35,21 +46,33 @@
 
     <!-- Pills -->
     <nav class="pills">
+      <div class="pill-box pill-3">
+        <a class="pill" href="#about">
+          <span class="en">ABOUT</span>
+          <span class="jp">当店の想い</span>
+        </a>
+      </div>
       <div class="pill-box pill-1">
-        <a class="pill" href="#menu">MENU</a>
+        <a class="pill" href="#menu">
+          <span class="en">MENU</span>
+          <span class="jp">メニュー</span>
+        </a>
       </div>
       <div class="pill-box pill-2">
-        <a class="pill" href="#news">NEWS</a>
+        <a class="pill" href="#news">
+          <span class="en">NEWS</span>
+          <span class="jp">ニュース</span>
+        </a>
       </div>
-      <div class="pill-box pill-3">
-        <a class="pill" href="#about">ABOUT</a>
-      </div>
+      
       <div class="pill-box pill-4">
-        <a class="pill" href="#access">ACCESS</a>
+        <a class="pill" href="#access">
+          <span class="en">ACCESS</span>
+          <span class="jp">アクセス</span>
+        </a>
       </div>
     </nav>
     <button class="hamburger" type="button" aria-label="Open navigation menu">
-      <span></span>
       <span></span>
       <span></span>
     </button>
@@ -166,22 +189,22 @@
             <!-- Item 1 -->
             <div class="menu-item">
               <div class="menu-img">
-                <img src="./images/img5.jpg" alt="ブランチトーストセット">
+                <img src="./images/menu/1/img27.jpg" alt="ブランチトーストセット">
               </div>
               <h3 class="menu-name">ブランチトーストセット</h3>
               <p class="menu-desc">
                 バターが溶ける厚切りトーストに、<br>
                 ベーコンと目玉焼きを添えた<br>
-                定番モーニング。<br>
+                定番モーニング<br>
                 香ばしいパンの香りと、朝のやさしい光<br>
-                がぴったりです。
+                がぴったりです
               </p>
               <p class="menu-price">¥850</p>
             </div>
             <!-- Item 2 -->
             <div class="menu-item">
               <div class="menu-img">
-                <img src="./images/img5.jpg" alt="サニーエッグブレックファースト">
+                <img src="./images/menu/1/img28.jpg" alt="サニーエッグブレックファースト">
               </div>
               <h3 class="menu-name">サニーエッグ<br>ブレックファースト</h3>
               <p class="menu-desc">
@@ -194,21 +217,21 @@
             <!-- Item 3 -->
             <div class="menu-item">
               <div class="menu-img">
-                <img src="./images/img5.jpg" alt="フレンチガーデントースト">
+                <img src="./images/menu/1/img36.jpg" alt="フレンチガーデントースト">
               </div>
-              <h3 class="menu-name">フレンチガーデントースト</h3>
+              <h3 class="menu-name">フレンチガーデン<br>トースト</h3>
               <p class="menu-desc">
                 こんがり焼いたトーストに<br>
                 半熟の目玉焼きとハーブをトッピング<br>
                 見た目も華やかな<br>
-                バリの朝食スタイル
+                パリの朝食スタイル
               </p>
               <p class="menu-price">¥880</p>
             </div>
             <!-- Item 4 -->
             <div class="menu-item">
               <div class="menu-img">
-                <img src="./images/img5.jpg" alt="イングリッシュプレート">
+                <img src="./images/menu/1/img41.jpg" alt="イングリッシュプレート">
               </div>
               <h3 class="menu-name">イングリッシュ<br>プレート</h3>
               <p class="menu-desc">
@@ -221,17 +244,339 @@
           </div>
 
           <!-- Placeholders for other tabs -->
-          <div class="menu-grid" id="content-drink" style="display:none;">
-             <div class="menu-item"><h3 class="menu-name">Drink Menu Coming Soon</h3></div>
+          <div class="menu-drink-list" id="content-drink" style="display:none;">
+            <div class="drink-category">
+              <h3 class="drink-category-title">COFFEE</h3>
+              <ul class="drink-items">
+                <li class="drink-item"><span class="drink-name">エスプレッソ</span><span class="drink-price">¥380</span></li>
+                <li class="drink-item"><span class="drink-name">アメリカーノ</span><span class="drink-price">¥420</span></li>
+                <li class="drink-item"><span class="drink-name">カフェラテ</span><span class="drink-price">¥480</span></li>
+                <li class="drink-item"><span class="drink-name">カプチーノ</span><span class="drink-price">¥480</span></li>
+                <li class="drink-item"><span class="drink-name">カフェモカ</span><span class="drink-price">¥520</span></li>
+                <li class="drink-item"><span class="drink-name">キャラメルラテ</span><span class="drink-price">¥550</span></li>
+                <li class="drink-item"><span class="drink-name">バニララテ</span><span class="drink-price">¥550</span></li>
+                <li class="drink-item"><span class="drink-name">ヘーゼルナッツラテ</span><span class="drink-price">¥580</span></li>
+                <li class="drink-item"><span class="drink-name">ダブルエスプレッソ</span><span class="drink-price">¥450</span></li>
+              </ul>
+            </div>
+            <div class="drink-category">
+              <h3 class="drink-category-title">TEA</h3>
+              <ul class="drink-items">
+                <li class="drink-item"><span class="drink-name">ダージリン</span><span class="drink-price">¥450</span></li>
+                <li class="drink-item"><span class="drink-name">アールグレイ</span><span class="drink-price">¥450</span></li>
+                <li class="drink-item"><span class="drink-name">ハーブティー</span><span class="drink-price">¥480</span></li>
+                <li class="drink-item"><span class="drink-name">ロイヤルミルクティー</span><span class="drink-price">¥520</span></li>
+                <li class="drink-item"><span class="drink-name">抹茶ラテ</span><span class="drink-price">¥550</span></li>
+                <li class="drink-item"><span class="drink-name">チャイラテ</span><span class="drink-price">¥550</span></li>
+                <li class="drink-item"><span class="drink-name">ジャスミンティー</span><span class="drink-price">¥450</span></li>
+                <li class="drink-item"><span class="drink-name">カモミールティー</span><span class="drink-price">¥480</span></li>
+                <li class="drink-item"><span class="drink-name">ほうじ茶ラテ</span><span class="drink-price">¥520</span></li>
+              </ul>
+            </div>
+            <div class="drink-category">
+              <h3 class="drink-category-title">SOFT DRINK</h3>
+              <ul class="drink-items">
+                <li class="drink-item"><span class="drink-name">オレンジジュース</span><span class="drink-price">¥400</span></li>
+                <li class="drink-item"><span class="drink-name">アップルジュース</span><span class="drink-price">¥400</span></li>
+                <li class="drink-item"><span class="drink-name">ジンジャエール</span><span class="drink-price">¥380</span></li>
+                <li class="drink-item"><span class="drink-name">レモネード</span><span class="drink-price">¥450</span></li>
+                <li class="drink-item"><span class="drink-name">ミネラルウォーター</span><span class="drink-price">¥280</span></li>
+                <li class="drink-item"><span class="drink-name">グレープフルーツジュース</span><span class="drink-price">¥420</span></li>
+                <li class="drink-item"><span class="drink-name">コーラ</span><span class="drink-price">¥350</span></li>
+                <li class="drink-item"><span class="drink-name">ウーロン茶</span><span class="drink-price">¥320</span></li>
+              </ul>
+            </div>
+            <div class="drink-category">
+              <h3 class="drink-category-title">SEASONAL</h3>
+              <ul class="drink-items">
+                <li class="drink-item"><span class="drink-name">アイスカフェラテ</span><span class="drink-price">¥500</span></li>
+                <li class="drink-item"><span class="drink-name">アイス抹茶ラテ</span><span class="drink-price">¥580</span></li>
+                <li class="drink-item"><span class="drink-name">フラッペチーノ</span><span class="drink-price">¥620</span></li>
+                <li class="drink-item"><span class="drink-name">季節のスムージー</span><span class="drink-price">¥650</span></li>
+                <li class="drink-item"><span class="drink-name">マンゴーラッシー</span><span class="drink-price">¥580</span></li>
+                <li class="drink-item"><span class="drink-name">ベリーベリースムージー</span><span class="drink-price">¥620</span></li>
+                <li class="drink-item"><span class="drink-name">ホットチョコレート</span><span class="drink-price">¥550</span></li>
+              </ul>
+            </div>
           </div>
-          <div class="menu-grid" id="content-pasta" style="display:none;">
-             <div class="menu-item"><h3 class="menu-name">Pasta Menu Coming Soon</h3></div>
+          <div class="menu-grid menu-scrollable" id="content-pasta" style="display:none;">
+            <!-- Item 1 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/3/img22.jpg" alt="ほうれん草のペペロンチーノ">
+              </div>
+              <h3 class="menu-name">ほうれん草の<br>ペペロンチーノ</h3>
+              <p class="menu-desc">
+                新鮮なほうれん草と<br>
+                ガーリックの香りが絶妙な<br>
+                シンプルながら奥深い一皿
+              </p>
+              <p class="menu-price">¥1,180</p>
+            </div>
+            <!-- Item 2 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/3/img23.jpg" alt="トマトバジルパスタ">
+              </div>
+              <h3 class="menu-name">トマトバジル<br>パスタ</h3>
+              <p class="menu-desc">
+                完熟トマトと<br>
+                フレッシュバジルの<br>
+                王道イタリアンの味わい
+              </p>
+              <p class="menu-price">¥1,080</p>
+            </div>
+            <!-- Item 3 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/3/img32.jpg" alt="クラシックミートソース">
+              </div>
+              <h3 class="menu-name">クラシック<br>ミートソース</h3>
+              <p class="menu-desc">
+                じっくり煮込んだ<br>
+                自家製ミートソースに<br>
+                パルメザンチーズをたっぷり
+              </p>
+              <p class="menu-price">¥1,280</p>
+            </div>
+            <!-- Item 4 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/3/img33.jpg" alt="ペンネボロネーゼ">
+              </div>
+              <h3 class="menu-name">ペンネ<br>ボロネーゼ</h3>
+              <p class="menu-desc">
+                濃厚なボロネーゼソースと<br>
+                もちもちのペンネが<br>
+                絡み合う贅沢な一品
+              </p>
+              <p class="menu-price">¥1,350</p>
+            </div>
+            <!-- Item 5 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/3/img42.jpg" alt="きのこのクリームパスタ">
+              </div>
+              <h3 class="menu-name">きのこの<br>クリームパスタ</h3>
+              <p class="menu-desc">
+                香り豊かなきのこと<br>
+                濃厚クリームソースの<br>
+                贅沢な一皿
+              </p>
+              <p class="menu-price">¥1,480</p>
+            </div>
+            <!-- Item 6 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/3/img43.jpg" alt="ジェノベーゼファルファッレ">
+              </div>
+              <h3 class="menu-name">ジェノベーゼ<br>ファルファッレ</h3>
+              <p class="menu-desc">
+                自家製バジルペーストと<br>
+                チェリートマトの<br>
+                爽やかなサラダパスタ
+              </p>
+              <p class="menu-price">¥1,250</p>
+            </div>
           </div>
-          <div class="menu-grid" id="content-pizza" style="display:none;">
-             <div class="menu-item"><h3 class="menu-name">Pizza Menu Coming Soon</h3></div>
+          <div class="menu-grid menu-scrollable" id="content-pizza" style="display:none;">
+            <!-- Item 1 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/4/img30.jpg" alt="クアトロフォルマッジ">
+              </div>
+              <h3 class="menu-name">クアトロ<br>フォルマッジ</h3>
+              <p class="menu-desc">
+                4種類のチーズの<br>
+                濃厚なハーモニー<br>
+                チーズ好きにはたまらない一品
+              </p>
+              <p class="menu-price">¥1,480</p>
+            </div>
+            <!-- Item 2 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/4/img35.jpg" alt="ガーリックピザ">
+              </div>
+              <h3 class="menu-name">ガーリック<br>ピザ</h3>
+              <p class="menu-desc">
+                トマトソースと<br>
+                たっぷりのガーリックスライス<br>
+                フレッシュバジルを添えて
+              </p>
+              <p class="menu-price">¥1,280</p>
+            </div>
+            <!-- Item 3 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/4/img44.jpg" alt="プロシュートアルグラ">
+              </div>
+              <h3 class="menu-name">プロシュート<br>アルグラ</h3>
+              <p class="menu-desc">
+                生ハムとルッコラ<br>
+                ブラックオリーブの<br>
+                爽やかで大人の味わい
+              </p>
+              <p class="menu-price">¥1,580</p>
+            </div>
+            <!-- Item 4 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/4/img48.jpg" alt="キッシュプレート">
+              </div>
+              <h3 class="menu-name">キッシュ<br>プレート</h3>
+              <p class="menu-desc">
+                サクサクのパイ生地に<br>
+                卵と野菜の風味豊かな<br>
+                フランス伝統料理
+              </p>
+              <p class="menu-price">¥1,380</p>
+            </div>
+            <!-- Item 5 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/4/img50.jpg" alt="ミックスピザ">
+              </div>
+              <h3 class="menu-name">ミックス<br>ピザ</h3>
+              <p class="menu-desc">
+                サラミ、パプリカ、オリーブ<br>
+                チーズたっぷりの<br>
+                ボリューム満点の一枚
+              </p>
+              <p class="menu-price">¥1,580</p>
+            </div>
           </div>
-          <div class="menu-grid" id="content-dessert" style="display:none;">
-             <div class="menu-item"><h3 class="menu-name">Dessert Menu Coming Soon</h3></div>
+          <div class="menu-grid menu-scrollable" id="content-dessert" style="display:none;">
+            <!-- Item 1 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/5/img11.jpg" alt="フレンチマカロン">
+              </div>
+              <h3 class="menu-name">フレンチ<br>マカロン</h3>
+              <p class="menu-desc">
+                カラフルで繊細な<br>
+                パリの伝統菓子<br>
+                3種類の詰め合わせ
+              </p>
+              <p class="menu-price">¥780</p>
+            </div>
+            <!-- Item 2 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/5/img13.jpg" alt="ストロベリーショートケーキ">
+              </div>
+              <h3 class="menu-name">ストロベリー<br>ショートケーキ</h3>
+              <p class="menu-desc">
+                ふわふわスポンジと<br>
+                生クリーム、いちごの<br>
+                定番の美味しさ
+              </p>
+              <p class="menu-price">¥850</p>
+            </div>
+            <!-- Item 3 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/5/img15.jpg" alt="モンブラン">
+              </div>
+              <h3 class="menu-name">モンブラン</h3>
+              <p class="menu-desc">
+                栗の風味豊かな<br>
+                クリームを贅沢に使用<br>
+                秋の定番スイーツ
+              </p>
+              <p class="menu-price">¥920</p>
+            </div>
+            <!-- Item 4 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/5/img16.jpg" alt="天然酵母パン">
+              </div>
+              <h3 class="menu-name">天然酵母<br>パン</h3>
+              <p class="menu-desc">
+                じっくり発酵させた<br>
+                もちもちの食感<br>
+                自家製天然酵母使用
+              </p>
+              <p class="menu-price">¥480</p>
+            </div>
+            <!-- Item 5 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/5/img17.jpg" alt="クラシックパンケーキ">
+              </div>
+              <h3 class="menu-name">クラシック<br>パンケーキ</h3>
+              <p class="menu-desc">
+                ふわふわ厚焼きパンケーキ<br>
+                バターとメープルシロップで<br>
+                シンプルな美味しさ
+              </p>
+              <p class="menu-price">¥880</p>
+            </div>
+            <!-- Item 6 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/5/img19.jpg" alt="ワッフル">
+              </div>
+              <h3 class="menu-name">ベルギー<br>ワッフル</h3>
+              <p class="menu-desc">
+                外はカリッと中はふんわり<br>
+                アイスクリーム添え<br>
+                定番のスイーツ
+              </p>
+              <p class="menu-price">¥820</p>
+            </div>
+            <!-- Item 7 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/5/img20.jpg" alt="モンブラン">
+              </div>
+              <h3 class="menu-name">モンブラン</h3>
+              <p class="menu-desc">
+                栗の風味豊かな<br>
+                クリームを贅沢に使用<br>
+                秋の定番スイーツ
+              </p>
+              <p class="menu-price">¥920</p>
+            </div>
+            <!-- Item 8 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/5/img21.jpg" alt="ミルフィーユ">
+              </div>
+              <h3 class="menu-name">ミルフィーユ</h3>
+              <p class="menu-desc">
+                サクサクのパイ生地と<br>
+                カスタードクリームの<br>
+                層が織りなす美味しさ
+              </p>
+              <p class="menu-price">¥890</p>
+            </div>
+            <!-- Item 9 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/5/img37.jpg" alt="パンナコッタ">
+              </div>
+              <h3 class="menu-name">パンナコッタ</h3>
+              <p class="menu-desc">
+                イタリアの定番デザート<br>
+                なめらかな食感と<br>
+                優しい甘さ
+              </p>
+              <p class="menu-price">¥680</p>
+            </div>
+            <!-- Item 10 -->
+            <div class="menu-item">
+              <div class="menu-img">
+                <img src="./images/menu/5/img39.jpg" alt="アフォガート">
+              </div>
+              <h3 class="menu-name">アフォガート</h3>
+              <p class="menu-desc">
+                バニラアイスに<br>
+                熱々のエスプレッソを<br>
+                かけた大人のデザート
+              </p>
+              <p class="menu-price">¥750</p>
+            </div>
           </div>
         </div>
       </div>
@@ -252,36 +597,68 @@
 
         <ul class="news-list">
           <li class="news-item reveal-up" data-img="./images/img5.jpg">
+            <!-- 手绘圈1: 从左上开始，略微重叠 -->
+            <svg class="news-circle circle-1" viewBox="0 0 200 100" preserveAspectRatio="none">
+              <path d="M 30 25 
+                       C 10 35, 5 65, 25 80 
+                       C 50 95, 150 98, 175 75 
+                       C 195 55, 190 25, 165 15 
+                       C 130 2, 60 5, 35 20
+                       C 20 30, 15 45, 25 55" />
+            </svg>
             <div class="news-meta">
               <span class="news-date">2025.11.10</span>
               <span class="news-cat">MENU</span>
             </div>
             <h3 class="news-headline">「モーニングセット」リニューアルのお知らせ</h3>
-            <div class="news-arrow">→</div>
           </li>
           <li class="news-item reveal-up" data-img="./images/about/img3.jpg">
+            <!-- 手绘圈2: 从右侧开始，更扁平 -->
+            <svg class="news-circle circle-2" viewBox="0 0 200 100" preserveAspectRatio="none">
+              <path d="M 185 50 
+                       C 190 75, 160 92, 120 95 
+                       C 70 98, 15 85, 8 55 
+                       C 2 30, 30 8, 80 5 
+                       C 140 2, 188 20, 192 45
+                       C 195 60, 180 70, 160 65" />
+            </svg>
             <div class="news-meta">
               <span class="news-date">2025.10.11</span>
               <span class="news-cat">CAMPAIGN</span>
             </div>
             <h3 class="news-headline">新規サイトオープン企画 Webサイトを見て特製ケーキをもらおう</h3>
-            <div class="news-arrow">→</div>
           </li>
           <li class="news-item reveal-up" data-img="./images/about/img7.jpg">
+            <!-- 手绘圈3: 从底部开始，不规则 -->
+            <svg class="news-circle circle-3" viewBox="0 0 200 100" preserveAspectRatio="none">
+              <path d="M 100 92 
+                       C 45 95, 8 75, 5 50 
+                       C 2 25, 35 5, 90 3 
+                       C 155 1, 195 20, 197 50 
+                       C 199 78, 155 95, 105 97
+                       C 75 98, 55 90, 70 82" />
+            </svg>
             <div class="news-meta">
               <span class="news-date">2025.10.11</span>
               <span class="news-cat">NEW ITEM</span>
             </div>
             <h3 class="news-headline">季節限定・新作マカロン登場！！</h3>
-            <div class="news-arrow">→</div>
           </li>
           <li class="news-item reveal-up" data-img="./images/about/img1.jpg">
+            <!-- 手绘圈4: 从顶部开始，有小尾巴 -->
+            <svg class="news-circle circle-4" viewBox="0 0 200 100" preserveAspectRatio="none">
+              <path d="M 95 5 
+                       C 160 2, 195 25, 193 55 
+                       C 191 82, 145 97, 85 95 
+                       C 30 93, 5 70, 7 45 
+                       C 9 22, 50 5, 100 8
+                       C 130 10, 145 18, 135 28" />
+            </svg>
             <div class="news-meta">
               <span class="news-date">2025.10.10</span>
               <span class="news-cat">INFO</span>
             </div>
             <h3 class="news-headline">カフェ・ド・パリWebサイトをオープン致しました。</h3>
-            <div class="news-arrow">→</div>
           </li>
         </ul>
       </div>
@@ -331,10 +708,7 @@
           </div>
           <div class="info-block">
             <h3 class="info-title">OPENING HOURS</h3>
-            <p class="info-text">
-              Mon - Fri: 8:00 - 22:00<br>
-              Sat - Sun: 9:00 - 23:00
-            </p>
+            <p class="info-text">6:00 - 22:00</p>
           </div>
           <div class="info-block">
             <h3 class="info-title">TEL</h3>
@@ -383,7 +757,31 @@
   </section>
 
   <footer class="site-footer">
-    <p>&copy; 2025 Café de PARIS. All Rights Reserved.</p>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <img src="./images/logo-white.svg" alt="Café de PARIS" class="footer-logo">
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><img src="./images/ig.svg" alt="Instagram"></a>
+            <a href="#" aria-label="Twitter"><img src="./images/x.svg" alt="Twitter"></a>
+          </div>
+        </div>
+        <div class="footer-info">
+          <p class="footer-hours"><span class="footer-hours-label">営業時間</span> 6:00-22:00</p>
+          <address class="footer-address">
+            Tokyo, Shinjuku City<br>
+            Nishishinjuku<br>
+            1 Chome-7-3
+          </address>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <a href="#about">ABOUT</a>
+        <a href="#menu">MENU</a>
+        <a href="#news">NEWS</a>
+        <a href="#access">ACCESS</a>
+      </nav>
+    </div>
   </footer>
 
   <script src="./main.js"></script>

@@ -1,5 +1,13 @@
 // Smooth spin-down on mouse leave for decorative images
 document.addEventListener('DOMContentLoaded', () => {
+  // Preloader hide on window load
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    const hide = () => preloader.classList.add('hide');
+    // Prefer 'load' (images, fonts done). Fallback timeout to avoid being stuck.
+    window.addEventListener('load', () => setTimeout(hide, 250));
+    setTimeout(hide, 3500);
+  }
   const images = document.querySelectorAll('.decor img');
   images.forEach((img) => {
     img.addEventListener('mouseenter', () => {
@@ -50,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Tab Switching Logic
   const folder = document.querySelector('.menu-folder');
   const tabs = document.querySelectorAll('.tab-btn');
-  const contents = document.querySelectorAll('.menu-grid');
+  const contents = document.querySelectorAll('.menu-grid, .menu-drink-list');
 
   if (folder && tabs.length > 0) {
     tabs.forEach(tab => {
@@ -65,16 +73,42 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update folder background via data attribute
         folder.setAttribute('data-active', target);
 
-        // Show relevant content
-        contents.forEach(content => {
-          if (content.id === `content-${target}`) {
-            content.style.display = 'grid';
-            content.classList.add('active');
+      // Show relevant content
+      contents.forEach(content => {
+        if (content.id === `content-${target}`) {
+          // Use flex for scrollable menu, grid for others
+          if (content.classList.contains('menu-scrollable')) {
+            content.style.display = 'flex';
+            
+            // Auto-scroll hint animation for scrollable menus
+            setTimeout(() => {
+              // Scroll right a bit
+              content.scrollTo({ left: 200, behavior: 'smooth' });
+              
+              // Scroll back to start after a short delay
+              setTimeout(() => {
+                content.scrollTo({ left: 0, behavior: 'smooth' });
+              }, 600);
+            }, 300);
+          } else if (content.classList.contains('menu-drink-list')) {
+            content.style.display = 'flex';
+            
+            // Auto-scroll hint animation for drink menu
+            setTimeout(() => {
+              content.scrollTo({ left: 150, behavior: 'smooth' });
+              setTimeout(() => {
+                content.scrollTo({ left: 0, behavior: 'smooth' });
+              }, 600);
+            }, 300);
           } else {
-            content.style.display = 'none';
-            content.classList.remove('active');
+            content.style.display = 'grid';
           }
-        });
+          content.classList.add('active');
+        } else {
+          content.style.display = 'none';
+          content.classList.remove('active');
+        }
+      });
       });
 
       // Hover effect to peek background layer
