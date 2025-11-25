@@ -452,9 +452,7 @@ body.is-sticky.nav-open .pills {
   position: fixed;
   inset: 0;
   z-index: 12000;
-  background:
-    radial-gradient(1200px 800px at 50% -20%, rgba(255,255,255,0.9), rgba(239,220,192,0.95) 40%, rgba(239,220,192,1) 60%),
-    #efdcc0; /* matches file2 background tone */
+  background: #F9F4EF; /* Cleaner beige requested by user */
   display: grid;
   place-items: center;
   transition: opacity 0.6s ease 0.1s, visibility 0s linear 0.7s;
@@ -602,7 +600,7 @@ body.is-sticky.nav-open .pills {
   color: #665a57;
   font-size: 15px;
   line-height: 2.6; /* Very airy */
-  margin-bottom: 80px;
+  /* margin-bottom: 80px; */
   font-weight: 500; /* Standardized JP weight */
 }
 .lead-paragraph {
@@ -1449,7 +1447,6 @@ body.is-sticky.nav-open .pills {
   width: 100%;
   max-width: 600px;
   background: #fff;
-  padding: 40px;
 }
 
 .reservation-lead {
@@ -1639,6 +1636,330 @@ body.is-sticky.nav-open .pills {
   opacity: 0.7;
 }
 
+/* -------------- Message Board Section -------------- */
+.message-section {
+  background: #f0e8dd; /* Slightly darker beige/cork color */
+  padding: 80px 0 200px; /* Extra bottom padding for the beeper */
+  position: relative;
+  overflow: hidden;
+  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message-header {
+  text-align: center;
+  margin-bottom: 40px;
+  z-index: 2;
+}
+
+/* The Wall */
+.message-wall {
+  width: 90%;
+  max-width: 1200px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 8px solid #e0d4c4;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden; /* Keep cards inside */
+  z-index: 1;
+}
+
+/* Note Cards */
+.note-card {
+  position: absolute;
+  width: 200px;
+  min-height: 120px;
+  background: #fffdf0;
+  padding: 20px;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+  transform-origin: center;
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  user-select: none;
+  /* Texture */
+  background-image: linear-gradient(#f1f1f1 1px, transparent 1px);
+  background-size: 100% 24px;
+}
+
+.note-card:active {
+  cursor: grabbing;
+  box-shadow: 4px 8px 15px rgba(0,0,0,0.2);
+  z-index: 100 !important; /* Bring to front on drag */
+}
+
+.note-text {
+  font-family: 'Special Elite', monospace; /* Typewriter font */
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.note-date {
+  font-family: 'VT323', monospace;
+  font-size: 12px;
+  color: #999;
+  text-align: right;
+  margin-top: 10px;
+}
+
+/* ----------------- Retro Motorola Beeper ----------------- */
+.beeper-wrapper {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  perspective: 800px;
+}
+
+.motorola-beeper {
+  width: 340px;
+  height: 200px;
+  background: #222;
+  border-radius: 12px;
+  box-shadow: 
+    0 10px 25px rgba(0,0,0,0.4),
+    inset 0 2px 3px rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  /* Texture for plastic */
+  background-image: radial-gradient(#333 15%, transparent 16%);
+  background-size: 4px 4px;
+}
+
+.beeper-brand {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px 5px;
+  margin-bottom: 5px;
+  border-bottom: 2px solid #333;
+}
+
+.brand-name {
+  font-family: 'Arial', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  color: #ccc;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.model-name {
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  color: #666;
+  font-size: 10px;
+}
+
+.beeper-screen-frame {
+  width: 100%;
+  height: 80px;
+  background: #111;
+  border-radius: 4px;
+  padding: 6px;
+  margin-bottom: 20px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.8);
+}
+
+.beeper-screen {
+  width: 100%;
+  height: 100%;
+  background: #7c8b73; /* Retro LCD Green */
+  border-radius: 2px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.screen-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+  pointer-events: none;
+}
+
+.beeper-input-group {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.beeper-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-family: 'VT323', monospace;
+  font-size: 24px;
+  color: #111;
+  text-transform: uppercase;
+  outline: none;
+  letter-spacing: 2px;
+  border-bottom: 1px dashed rgba(0,0,0,0.1);
+}
+
+.beeper-input-name {
+  width: 80px;
+  background: transparent;
+  border: none;
+  border-left: 2px solid rgba(0,0,0,0.2);
+  padding-left: 8px;
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  color: #333;
+  text-transform: uppercase;
+  outline: none;
+  letter-spacing: 1px;
+}
+
+.beeper-input::placeholder, .beeper-input-name::placeholder {
+  color: rgba(17, 17, 17, 0.3);
+  font-size: 0.8em;
+}
+
+/* Cursor blink effect for retro feel */
+@keyframes blink {
+  50% { opacity: 0; }
+}
+.beeper-input:focus, .beeper-input-name:focus {
+  animation: blink 1s step-end infinite;
+  border-bottom: 2px solid #111;
+}
+
+/* Card Colors */
+.note-card.color-1 { background-color: #fffdf0; } /* Yellow (Default) */
+.note-card.color-2 { background-color: #f0fff4; } /* Green */
+.note-card.color-3 { background-color: #f0f8ff; } /* Blue */
+.note-card.color-4 { background-color: #fff0f5; } /* Pink */
+.note-card.color-5 { background-color: #fdf5e6; } /* Orange */
+
+.note-author {
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  color: #666;
+  text-align: right;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.beeper-controls {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.beeper-btn {
+  background: #1a1a1a;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 
+    0 2px 0 #000,
+    0 3px 3px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.beeper-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 #000;
+}
+
+.btn-action {
+  background: #8b3a3a; /* Red button */
+  color: #fff;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 10px 20px;
+  letter-spacing: 1px;
+}
+
+.beeper-btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-small {
+  width: 20px;
+  height: 10px;
+  background: #333;
+  border-radius: 2px;
+}
+
+.beeper-clip {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  width: 40px;
+  height: 10px;
+  background: #111;
+  border-radius: 4px 4px 0 0;
+}
+
+/* Printing Animation State */
+.printing .beeper-input {
+  color: transparent; /* Hide text while "printing" */
+}
+
+/* Print Effect - Card flies from beeper */
+@keyframes printOut {
+  0% {
+    transform: translate(-50%, 100vh) rotate(0deg) scale(0.3);
+    opacity: 0;
+  }
+  40% {
+    transform: translate(-50%, 50vh) rotate(180deg) scale(0.5);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(0, 0) rotate(var(--final-rotation, 0deg)) scale(1);
+    opacity: 1;
+  }
+}
+
+.note-card.printing-animation {
+  animation: printOut 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Typewriter line-by-line reveal effect */
+@keyframes lineReveal {
+  from {
+    max-height: 0;
+    overflow: hidden;
+  }
+  to {
+    max-height: 200px;
+    overflow: visible;
+  }
+}
+
+.note-card.printing-animation .note-text {
+  animation: lineReveal 0.8s ease-out 0.6s forwards;
+  max-height: 0;
+  overflow: hidden;
+}
+
 @media (max-width: 768px) {
   .access-header {
     transform: scale(0.9);
@@ -1667,5 +1988,79 @@ body.is-sticky.nav-open .pills {
   }
   .footer-nav a {
     font-size: 14px;
+  }
+  
+  /* Message Board Responsive */
+  .message-wall {
+    height: 400px;
+    width: 95%;
+  }
+  .beeper-wrapper {
+    bottom: 40px;
+    width: 90%;
+  }
+  .motorola-beeper {
+    width: 100%;
+    height: 180px;
+  }
+  .beeper-input {
+    font-size: 20px;
+  }
+}
+
+/* -------------- Back to Top Button -------------- */
+.back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 56px;
+  height: 56px;
+  background: var(--brown);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, background 0.3s ease;
+  z-index: 1100;
+  box-shadow: 0 4px 12px rgba(107, 63, 58, 0.3);
+}
+
+.back-to-top:hover {
+  background: #5a2f2b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(107, 63, 58, 0.4);
+}
+
+.back-to-top:active {
+  transform: translateY(0);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    width: 48px;
+    height: 48px;
+    bottom: 20px;
+    right: 20px;
+  }
+  .back-to-top svg {
+    width: 20px;
+    height: 20px;
   }
 }

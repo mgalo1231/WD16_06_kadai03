@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Premium Fonts: Cormorant Garamond (EN), Shippori Mincho (JP) -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Retro Fonts for Message Board -->
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Special+Elite&display=swap" rel="stylesheet">
   <!-- Keep previous fonts just in case, but overrides will happen in CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
@@ -756,6 +758,88 @@
     </div>
   </section>
 
+  <!-- Message Board Section -->
+  <section id="message-board" class="message-section">
+    <div class="message-header">
+      <!-- <h2 class="section-title">GUEST BOOK</h2> -->
+      <p class="section-body">カフェでのひとときを、一言残してみませんか？</p>
+    </div>
+
+    <!-- The Wall (Drop Zone) -->
+    <div class="message-wall" id="messageWall">
+      <!-- Preset cards with different colors -->
+      <div class="note-card sample-card color-1" style="top: 15%; left: 8%; transform: rotate(-3deg);">
+        <p class="note-text">コーヒー最高でした！<br>また来ます。</p>
+        <div style="margin-top: auto;">
+          <div class="note-date">2025.11.25</div>
+          <div class="note-author">- Yuki</div>
+        </div>
+      </div>
+      <div class="note-card sample-card color-3" style="top: 25%; left: 65%; transform: rotate(4deg);">
+        <p class="note-text">落ち着く空間で<br>癒されました。</p>
+        <div style="margin-top: auto;">
+          <div class="note-date">2025.11.24</div>
+        </div>
+      </div>
+      <div class="note-card sample-card color-2" style="top: 45%; left: 15%; transform: rotate(2deg);">
+        <p class="note-text">マカロンが<br>美味しかった！</p>
+        <div style="margin-top: auto;">
+          <div class="note-date">2025.11.23</div>
+          <div class="note-author">- Marie</div>
+        </div>
+      </div>
+      <div class="note-card sample-card color-4" style="top: 50%; left: 70%; transform: rotate(-4deg);">
+        <p class="note-text">パリの雰囲気<br>最高です♡</p>
+        <div style="margin-top: auto;">
+          <div class="note-date">2025.11.22</div>
+        </div>
+      </div>
+      <div class="note-card sample-card color-5" style="top: 10%; left: 40%; transform: rotate(1deg);">
+        <p class="note-text">毎日通いたい<br>カフェです。</p>
+        <div style="margin-top: auto;">
+          <div class="note-date">2025.11.21</div>
+          <div class="note-author">- Taro</div>
+        </div>
+      </div>
+      <div class="note-card sample-card color-2" style="top: 60%; left: 40%; transform: rotate(-2deg);">
+        <p class="note-text">素敵な時間を<br>ありがとう。</p>
+        <div style="margin-top: auto;">
+          <div class="note-date">2025.11.20</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Retro Beeper Input Device -->
+    <div class="beeper-wrapper">
+      <div class="motorola-beeper">
+        <div class="beeper-brand">
+          <span class="brand-name">MOTOROLA</span>
+          <span class="model-name">FIX BEEPER</span>
+        </div>
+        
+        <div class="beeper-screen-frame">
+          <div class="beeper-screen">
+            <div class="beeper-input-group">
+              <input type="text" id="beeperInput" class="beeper-input" placeholder="メッセージ..." maxlength="40">
+              <input type="text" id="beeperName" class="beeper-input-name" placeholder="名前" maxlength="10">
+            </div>
+            <div class="screen-glare"></div>
+          </div>
+        </div>
+
+        <div class="beeper-controls">
+          <button id="btnSend" class="beeper-btn btn-action">送信</button>
+          <div class="beeper-btn-group">
+            <button class="beeper-btn btn-small"></button>
+            <button class="beeper-btn btn-small"></button>
+          </div>
+        </div>
+        
+        <div class="beeper-clip"></div>
+      </div>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-left">
@@ -783,6 +867,13 @@
       </nav>
     </div>
   </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" aria-label="ページトップへ戻る">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
 
   <script src="./main.js"></script>
 </body>
