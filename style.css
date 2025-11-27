@@ -850,12 +850,52 @@ body.is-sticky.nav-open .pills {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 40px;
-  animation: fadeIn 0.4s ease-out;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Card enter animation base state */
+.menu-grid .menu-item,
+.menu-drink-list .drink-category {
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+}
+
+/* Animate when the panel is active */
+.menu-grid.active .menu-item,
+.menu-drink-list.active .drink-category {
+  animation: menuCardIn 0.45s cubic-bezier(0.17, 0.89, 0.32, 1.28) forwards;
+}
+
+/* Staggered delays for a playful effect */
+.menu-grid.active .menu-item:nth-child(1),
+.menu-drink-list.active .drink-category:nth-child(1) { animation-delay: 0s; }
+.menu-grid.active .menu-item:nth-child(2),
+.menu-drink-list.active .drink-category:nth-child(2) { animation-delay: 0.03s; }
+.menu-grid.active .menu-item:nth-child(3),
+.menu-drink-list.active .drink-category:nth-child(3) { animation-delay: 0.06s; }
+.menu-grid.active .menu-item:nth-child(4),
+.menu-drink-list.active .drink-category:nth-child(4) { animation-delay: 0.09s; }
+.menu-grid.active .menu-item:nth-child(5),
+.menu-drink-list.active .drink-category:nth-child(5) { animation-delay: 0.12s; }
+.menu-grid.active .menu-item:nth-child(6),
+.menu-drink-list.active .drink-category:nth-child(6) { animation-delay: 0.15s; }
+.menu-grid.active .menu-item:nth-child(7),
+.menu-drink-list.active .drink-category:nth-child(7) { animation-delay: 0.18s; }
+.menu-grid.active .menu-item:nth-child(8),
+.menu-drink-list.active .drink-category:nth-child(8) { animation-delay: 0.21s; }
+.menu-grid.active .menu-item:nth-child(9),
+.menu-drink-list.active .drink-category:nth-child(9) { animation-delay: 0.24s; }
+.menu-grid.active .menu-item:nth-child(10),
+.menu-drink-list.active .drink-category:nth-child(10) { animation-delay: 0.27s; }
+
+@keyframes menuCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* Scrollable Menu Grid (for Pasta) */
